@@ -31,7 +31,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                   .antMatchers("/api/requests/{id}/change-requests-status").hasAuthority(RoleEnum.ADMIN.toString())
                   // API User
                   .antMatchers("/api/users/all", "/api/users/create").permitAll()
-                  .antMatchers("/api/users/{id}/delete/favoriteBooks", "/api/users/{id}/update/password", "/api/users/{id}/update/add-book-to-favorites").hasAnyAuthority(RoleEnum.ADMIN.toString(),  RoleEnum.USER.toString())
                   // API Swagger
                   .antMatchers("/v2/api-docs",
                             "/swagger-resources/**",

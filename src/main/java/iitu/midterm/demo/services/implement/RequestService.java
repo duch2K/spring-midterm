@@ -8,10 +8,12 @@ import iitu.midterm.demo.services.IRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class RequestService implements IRequestService, ApplicationEventPublisherAware {
     @Autowired
     private RequestRepository requestRepository;
@@ -32,8 +34,8 @@ public class RequestService implements IRequestService, ApplicationEventPublishe
         request.setDay(new Date());
         Request saveRequest = requestRepository.saveAndFlush(request);
 
-        for (int i = 0; i < saveRequest.getOrderItems().size(); i++) {
-            saveRequest.getOrderItems().get(i).setRequestId(saveRequest.getId());
+        for (int i = 0; i < saveRequest.getRequestItems().size(); i++) {
+            saveRequest.getRequestItems().get(i).setRequestId(saveRequest.getId());
         }
 
         return requestRepository.saveAndFlush(saveRequest);

@@ -45,5 +45,4 @@ public class BookController {
     public void deleteBookById(@PathVariable("id") Long id) {
         iBookService.deleteBookById(id);
     }
-
 }

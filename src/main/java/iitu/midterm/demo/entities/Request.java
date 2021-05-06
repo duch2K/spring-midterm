@@ -29,5 +29,5 @@ public class Request {
 
     @OneToMany(mappedBy = "request", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<RequestItem> orderItems;
+    private List<RequestItem> requestItems;
 }

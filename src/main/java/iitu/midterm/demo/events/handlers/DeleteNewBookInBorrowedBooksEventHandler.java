@@ -9,8 +9,9 @@ public class DeleteNewBookInBorrowedBooksEventHandler implements ApplicationList
 
     @Override
     public void onApplicationEvent(DeleteBookInBorrowedBooksEvent deleteBookInBorrowedBooksEvent) {
-        System.out.println("\nStudent delete book in borrowed books.");
-        System.out.println("Student: " + deleteBookInBorrowedBooksEvent.getStudent().getName());
-        System.out.println("Book: " + deleteBookInBorrowedBooksEvent.getBook().getInfo());
+        System.out.println("\nUser delete book in borrowed books.");
+        System.out.println("User: " + deleteBookInBorrowedBooksEvent.getUser().getName());
+        System.out.println("Book: " + deleteBookInBorrowedBooksEvent.getBook().getAuthor()
+                  + " - " + deleteBookInBorrowedBooksEvent.getBook().getTitle());
     }
 }

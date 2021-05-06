@@ -1,27 +1,49 @@
 package iitu.midterm.demo.controllers;
 
 import iitu.midterm.demo.entities.Book;
-import iitu.midterm.demo.entities.Student;
-import iitu.midterm.demo.services.implement.BookService;
+import iitu.midterm.demo.services.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
-@Controller
+@RestController
+@RequestMapping("/api/books")
 public class BookController {
     @Autowired
-    private BookService bookService;
+    private IBookService iBookService;
 
-    public List<Book> getBooks() {
-        return bookService.getAllBooks();
+    // GET
+    @GetMapping("")
+    public ResponseEntity<?> findBookByNameOrAuthor(@RequestParam("name") String name, @RequestParam("author") String author) {
+        return ResponseEntity.ok(iBookService.findBookByNameOrAuthor(name, author));
     }
 
-    public List<Book> getBooksByStudent(Student student) {
-        return bookService.getBooksByStudent(student);
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getBookById(@PathVariable() Long id) {
+        return ResponseEntity.ok(iBookService.getBookById(id));
     }
 
-    public List<Book> getBooksByNotStudent(Student student) {
-        return bookService.getBooksByNotStudent(student);
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllBooks() {
+        return ResponseEntity.ok(iBookService.getAll());
     }
+
+    // POST
+    @PostMapping("/action/create")
+    public ResponseEntity<?> createNewBook(@RequestBody Book book) {
+        return ResponseEntity.ok(iBookService.createNew(book));
+    }
+
+    // PUT
+    @PutMapping("/action/update")
+    public ResponseEntity<?> updateBook(@RequestBody Book book) {
+        return ResponseEntity.ok(iBookService.update(book));
+    }
+
+    // DELETE
+    @DeleteMapping("/action/delete/{id}")
+    public void deleteBookById(@PathVariable("id") Long id) {
+        iBookService.deleteBookById(id);
+    }
+
 }

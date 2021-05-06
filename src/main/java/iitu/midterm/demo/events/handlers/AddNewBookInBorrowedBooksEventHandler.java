@@ -8,8 +8,9 @@ import org.springframework.stereotype.Component;
 public class AddNewBookInBorrowedBooksEventHandler implements ApplicationListener<AddNewBookInBorrowedBooksEvent> {
     @Override
     public void onApplicationEvent(AddNewBookInBorrowedBooksEvent addNewBookInBorrowedBooksEvent) {
-        System.out.println("\nStudent add new book in borrowed books.");
-        System.out.println("Student: " + addNewBookInBorrowedBooksEvent.getStudent().getName());
-        System.out.println("Book: " + addNewBookInBorrowedBooksEvent.getBook().getInfo());
+        System.out.println("\nUser add new book in borrowed books.");
+        System.out.println("User: " + addNewBookInBorrowedBooksEvent.getUser().getName());
+        System.out.println("Book: " + addNewBookInBorrowedBooksEvent.getBook().getAuthor()
+                  + " - " + addNewBookInBorrowedBooksEvent.getBook().getTitle());
     }
 }

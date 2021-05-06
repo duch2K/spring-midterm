@@ -1,7 +1,7 @@
 package iitu.midterm.demo.services.implement;
 
 import iitu.midterm.demo.entities.Book;
-import iitu.midterm.demo.entities.Student;
+import iitu.midterm.demo.entities.User;
 import iitu.midterm.demo.repositories.BookRepository;
 import iitu.midterm.demo.services.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +15,42 @@ public class BookService implements IBookService {
     private BookRepository bookRepository;
 
     @Override
-    public List<Book> getAllBooks() {
-        return bookRepository.getAllBy();
+    public List<Book> getAll() {
+        return bookRepository.findAll();
     }
 
     @Override
-    public List<Book> getBooksByStudent(Student student) {
-        return bookRepository.getBooksByStudentsContains(student);
+    public List<Book> findBookByNameOrAuthor(String name, String author) {
+        return bookRepository.getBooksByNameContainsOrAuthorContains(name, author);
     }
 
     @Override
-    public List<Book> getBooksByNotStudent(Student student) {
-        return bookRepository.getBooksByStudentsNotContainingAndQuantityIsNot(student, 0);
+    public Book getBookById(Long id) {
+        return bookRepository.getBookById(id);
     }
+
+    @Override
+    public Book createNew(Book book) {
+        return bookRepository.saveAndFlush(book);
+    }
+
+    @Override
+    public Book update(Book book) {
+        return bookRepository.saveAndFlush(book);
+    }
+
+    @Override
+    public void deleteBookById(Long id) {
+        bookRepository.deleteById(id);
+    }
+
+//    @Override
+//    public List<Book> getBooksByUser(User user) {
+//        return bookRepository.;
+//    }
+
+//    @Override
+//    public List<Book> getBooksByNotUser(User user) {
+//        return null;
+//    }
 }

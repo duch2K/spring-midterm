@@ -1,12 +1,17 @@
 package iitu.midterm.demo.services;
 
 import iitu.midterm.demo.entities.Book;
-import iitu.midterm.demo.entities.Student;
+import iitu.midterm.demo.entities.User;
 
 import java.util.List;
 
 public interface IBookService {
-    List<Book> getAllBooks();
-    List<Book> getBooksByStudent(Student student);
-    List<Book> getBooksByNotStudent(Student student);
+    List<Book> getAll();
+    List<Book> findBookByNameOrAuthor(String name, String author);
+    Book getBookById(Long id);
+    Book createNew(Book book);
+    Book update(Book book);
+    void deleteBookById(Long id);
+//    List<Book> getBooksByUser(User user);
+//    List<Book> getBooksByNotUser(User user);
 }

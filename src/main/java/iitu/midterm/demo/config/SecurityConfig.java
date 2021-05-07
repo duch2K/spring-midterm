@@ -24,13 +24,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                   .antMatchers("/auth/**").permitAll()
                   // API Book
                   .antMatchers("/api/books", "/api/books/{id}", "/api/books/all").permitAll()
-                  .antMatchers("/api/books/action/create", "/api/books/action/update", "/api/books/action/delete/{id}", "/api/books/action/update/{id}").hasAuthority(RoleEnum.ADMIN.toString())
+                  .antMatchers("/api/books/create", "/api/books/update", "/api/books/delete/{id}", "/api/books/update/{id}").permitAll()
+//                  .antMatchers("/api/books/create", "/api/books/update", "/api/books/delete/{id}", "/api/books/update/{id}").hasAuthority(RoleEnum.ADMIN.toString())
                   // API Request
                   .antMatchers("/api/requests", "/api/requests/all").permitAll()
                   .antMatchers("/api/requests/create").hasAnyAuthority(RoleEnum.ADMIN.toString(), RoleEnum.USER.toString())
                   .antMatchers("/api/requests/{id}/change-requests-status").hasAuthority(RoleEnum.ADMIN.toString())
                   // API User
-                  .antMatchers("/api/users/all", "/api/users/create").permitAll()
+                  .antMatchers("/api/users", "/api/users/create", "/api/users/{id}/update/username").permitAll()
                   // API Swagger
                   .antMatchers("/v2/api-docs",
                             "/swagger-resources/**",

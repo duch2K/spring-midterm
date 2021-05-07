@@ -1,5 +1,6 @@
 package iitu.midterm.demo.controllers;
 
+import iitu.midterm.demo.entities.Book;
 import iitu.midterm.demo.entities.User;
 import iitu.midterm.demo.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class UserController {
     private IUserService iUserService;
 
     // GET
-    @GetMapping("/all")
+    @GetMapping("")
     public ResponseEntity<?> getAllUsers() {
         return ResponseEntity.ok(iUserService.getAll());
     }
@@ -26,9 +27,20 @@ public class UserController {
 
     // PATCH
     @PatchMapping("/{id}/update/username")
-    public ResponseEntity<?> updateUserPassword(@PathVariable("id") Long id, @RequestBody String username) {
+    public ResponseEntity<?> updateUserName(@PathVariable("id") Long id, @RequestBody String username) {
         return ResponseEntity.ok(iUserService.updateUsername(id, username));
     }
+
+//    @PatchMapping("/{id}/update/add-book-to-favorites")
+//    public ResponseEntity<?> addBookToFavorites(@PathVariable("id") Long id, @RequestBody Book book) {
+//        return ResponseEntity.ok(iUserService.addBookToFavorites(id, book));
+//    }
+//
+//    // DELETE
+//    @DeleteMapping("/{id}/delete/favoriteBooks")
+//    public ResponseEntity<?> deleteBookFromFavoriteBook(@PathVariable("id") Long id, @RequestBody Book book) {
+//        return ResponseEntity.ok(iUserService.deleteBookFromFavorites(id, book));
+//    }
 }
 
 //    public void addBookInBorrowedBooks(String username, Book book) {

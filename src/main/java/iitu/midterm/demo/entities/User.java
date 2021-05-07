@@ -25,13 +25,13 @@ public class User implements UserDetails {
     private String password;
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "user_book",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "book_id") }
-    )
-    private List<Book> books;
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinTable(
+//              name = "favorite_books",
+//              joinColumns = { @JoinColumn(name = "user_id") },
+//              inverseJoinColumns = { @JoinColumn(name = "book_id") }
+//    )
+//    private Set<Book> favoriteBooks;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(

@@ -34,9 +34,10 @@ public class RequestService implements IRequestService, ApplicationEventPublishe
         request.setDay(new Date());
         Request saveRequest = requestRepository.saveAndFlush(request);
 
-        for (int i = 0; i < saveRequest.getRequestItems().size(); i++) {
-            saveRequest.getRequestItems().get(i).setRequestId(saveRequest.getId());
-        }
+//        for (int i = 0; i < saveRequest.getBook().size(); i++) {
+//            saveRequest.getBook().get(i).setRequestId(saveRequest.getId());
+//        }
+//        saveRequest.setBook;
 
         return requestRepository.saveAndFlush(saveRequest);
     }

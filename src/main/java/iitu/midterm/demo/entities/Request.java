@@ -20,6 +20,8 @@ public class Request {
     private Long id;
     @Column(name = "user_id")
     private Long userId;
+    @Column(name = "book_id")
+    private Long bookId;
     @Enumerated(EnumType.STRING)
     private RequestStatusEnum status;
     private Date day;
@@ -28,7 +30,11 @@ public class Request {
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
-    @OneToMany(mappedBy = "request", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<RequestItem> requestItems;
+    @ManyToOne
+    @JoinColumn(name = "book_id", insertable = false, updatable = false)
+    private Book book;
+
+//    @OneToMany(mappedBy = "request", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private List<RequestItem> requestItems;
 }

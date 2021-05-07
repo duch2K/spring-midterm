@@ -29,19 +29,19 @@ public class BookController {
     }
 
     // POST
-    @PostMapping("/action/create")
+    @PostMapping("/create")
     public ResponseEntity<?> createNewBook(@RequestBody Book book) {
         return ResponseEntity.ok(iBookService.createNew(book));
     }
 
     // PUT
-    @PutMapping("/action/update")
+    @PutMapping("/update")
     public ResponseEntity<?> updateBook(@RequestBody Book book) {
         return ResponseEntity.ok(iBookService.update(book));
     }
 
     // DELETE
-    @DeleteMapping("/action/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteBookById(@PathVariable("id") Long id) {
         iBookService.deleteBookById(id);
     }

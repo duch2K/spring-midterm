@@ -2,9 +2,7 @@ package iitu.midterm.demo.services.implement;
 
 import iitu.midterm.demo.entities.Book;
 import iitu.midterm.demo.entities.User;
-import iitu.midterm.demo.events.AddNewBookInBorrowedBooksEvent;
-import iitu.midterm.demo.events.DeleteBookInBorrowedBooksEvent;
-import iitu.midterm.demo.repositories.BookRepository;
+import iitu.midterm.demo.events.UserAddNewFavorite;
 import iitu.midterm.demo.repositories.UserRepository;
 import iitu.midterm.demo.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +51,21 @@ public class UserService implements IUserService, UserDetailsService, Applicatio
         }
         return user;
     }
+
+//    @Override
+//    public User addBookToFavorites(Long userId, Book book) {
+//        User user = userRepository.getOne(userId);
+//        user.getFavoriteBooks().add(book);
+//        eventPublisher.publishEvent(new UserAddNewFavorite(this, user, book));
+//        return userRepository.saveAndFlush(user);
+//    }
+//
+//    @Override
+//    public User deleteBookFromFavorites(Long userId, Book book) {
+//        User user = userRepository.getOne(userId);
+//        user.getFavoriteBooks().remove(book);
+//        return userRepository.saveAndFlush(user);
+//    }
 
     @Override
     public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {

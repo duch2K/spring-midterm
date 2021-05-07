@@ -21,7 +21,7 @@ public class BookService implements IBookService {
 
     @Override
     public List<Book> findBookByNameOrAuthor(String name, String author) {
-        return bookRepository.getBooksByNameContainsOrAuthorContains(name, author);
+        return bookRepository.getBooksByTitleContainsOrAuthorContains(name, author);
     }
 
     @Override

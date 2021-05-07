@@ -2,9 +2,11 @@ package iitu.midterm.demo.services;
 
 import iitu.midterm.demo.entities.Book;
 import iitu.midterm.demo.entities.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface IUserService {
     List<User> getAll();
     User createNew(User user);

@@ -10,7 +10,15 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
     Book getBookById(Long id);
-    List<Book> getBooksByNameContainsOrAuthorContains(String name, String author);
-//    List<Book> getBooksByUserContains(User user);
-//    List<Book> getBooksByUserNotContainingAndQuantityIsNot(User user, int quantity);
+    List<Book> getBooksByTitleContainsOrAuthorContains(String name, String author);
+//    List<Book> getBooksByNameContainsOrAuthorContains(String name, String author);
 }
+
+
+//@Repository
+//public interface BookRepository extends JpaRepository<Book, Long> {
+//    Book getBookById(Long id);
+//    List<Book> getBooksByNameContainsOrAuthorContains(String name, String author);
+////    List<Book> getBooksByUserContains(User user);
+////    List<Book> getBooksByUserNotContainingAndQuantityIsNot(User user, int quantity);
+//}

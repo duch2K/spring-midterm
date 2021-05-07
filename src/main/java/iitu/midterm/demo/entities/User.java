@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name="users")
 @Setter
 @Getter
 @NoArgsConstructor
@@ -19,12 +20,12 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String username;
     private String password;
     private String name;
-    private Integer year;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_book",
             joinColumns = { @JoinColumn(name = "user_id") },

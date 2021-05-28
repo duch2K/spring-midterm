@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -23,6 +24,11 @@ public class UserController {
     @PostMapping("/create")
     public ResponseEntity<?> createNewUser(@RequestBody User user) {
         return ResponseEntity.ok(iUserService.createNew(user));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteUserById(@PathVariable("id") Long id) {
+        iUserService.deleteUserById(id);
     }
 
     // PATCH
